@@ -7,8 +7,8 @@ export default function Living() {
   return (
     <>
       {/* HEADER */}
-      <header className="pt-24 md:pt-32 pb-12 md:pb-16 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-end gap-6 md:gap-8 relative z-10">
+      <header className="pt-32 pb-16 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-end gap-8 relative z-10">
           <div>
             <span className="text-emerald-400 text-sm font-bold tracking-widest uppercase mb-4 block">
               Exhibition View
@@ -22,10 +22,10 @@ export default function Living() {
           </div>
 
           {/* Category Links */}
-          <div className="flex flex-wrap gap-2 md:gap-3">
+          <div className="flex flex-wrap gap-3">
             <Link
               to="/collections"
-              className={`px-4 md:px-5 py-2 inline-block rounded-lg text-xs font-bold tracking-wider transition-all duration-300 ${isLightMode ? 'bg-white border border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900 shadow-sm' : 'bg-gray-900 border border-gray-800 text-gray-400 hover:border-gray-600 hover:text-white'}`}
+              className={`px-5 py-2 inline-block rounded-lg text-xs font-bold tracking-wider transition-all duration-300 ${isLightMode ? 'bg-white border border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900 shadow-sm' : 'bg-gray-900 border border-gray-800 text-gray-400 hover:border-gray-600 hover:text-white'}`}
             >
               ALL PIECES
             </Link>
@@ -33,14 +33,14 @@ export default function Living() {
             {/* ACTIVE */}
             <Link
               to="/living"
-              className={`px-4 md:px-5 py-2 inline-block rounded-lg text-xs font-bold tracking-wider transition-all duration-300 ${isLightMode ? 'bg-gradient-to-r from-amber-100 to-yellow-100 border border-amber-300 text-amber-700 shadow-sm' : 'bg-gradient-to-r from-amber-500/20 to-amber-500/20 border border-amber-500/50 text-white shadow-[0_0_15px_rgba(52,211,153,0.2)]'}`}
+              className={`px-5 py-2 inline-block rounded-lg text-xs font-bold tracking-wider transition-all duration-300 ${isLightMode ? 'bg-gradient-to-r from-amber-100 to-yellow-100 border border-amber-300 text-amber-700 shadow-sm' : 'bg-gradient-to-r from-amber-500/20 to-amber-500/20 border border-amber-500/50 text-white shadow-[0_0_15px_rgba(52,211,153,0.2)]'}`}
             >
               LIVINGROOM
             </Link>
 
             <Link
               to="/bedroom"
-              className={`px-4 md:px-5 py-2 inline-block rounded-lg text-xs font-bold tracking-wider transition-all duration-300 ${isLightMode ? 'bg-white border border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900 shadow-sm' : 'bg-gray-900 border border-gray-800 text-gray-400 hover:border-gray-600 hover:text-white'}`}
+              className={`px-5 py-2 inline-block rounded-lg text-xs font-bold tracking-wider transition-all duration-300 ${isLightMode ? 'bg-white border border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900 shadow-sm' : 'bg-gray-900 border border-gray-800 text-gray-400 hover:border-gray-600 hover:text-white'}`}
             >
               BEDROOM
             </Link>
