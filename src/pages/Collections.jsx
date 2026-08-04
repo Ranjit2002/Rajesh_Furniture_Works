@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
+import QuickViewModal from '../components/QuickViewModal';
 
 // Keep your existing images array exactly as you had it
 const images = [
@@ -27,10 +29,12 @@ const images = [
 
 export default function Collections() {
   const { isLightMode } = useTheme();
+  const [selectedItem, setSelectedItem] = useState(null);
 
   return (
     <>
-      <header className="pt-32 pb-16 relative overflow-hidden">
+      {/* HEADER WITH AOS ANIMATION */}
+      <header className="pt-32 pb-16 relative overflow-hidden" data-aos="fade-down">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-end gap-8 relative z-10">
           <div>
             <span className="text-emerald-400 text-sm font-bold tracking-widest uppercase mb-4 block">
@@ -98,21 +102,36 @@ export default function Collections() {
         </div>
       </header>
 
+      {/* GALLERY GRID WITH AOS AND LAZY LOADING */}
       <main className="max-w-7xl mx-auto px-6 md:px-12 pb-24 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-start mt-8">
           {images.map((imgSrc, index) => (
-            <div key={index} className={`rounded-2xl overflow-hidden shadow-lg border transition-colors duration-300 ${isLightMode ? 'border-slate-200' : 'border-white/5'}`}>
-              
-              <img 
-                src={`${import.meta.env.BASE_URL}${imgSrc.slice(1)}`} 
-                alt={`Gallery piece ${index + 1}`} 
-                className="w-full h-auto block" 
-              />
-
+            <div 
+              key={index} 
+              data-aos="fade-up" 
+              data-aos-delay={(index % 2) * 150} // Staggered animation
+              onClick={() => setSelectedItem({ 
+                src: imgSrc.slice(1), 
+                name: `Curated Piece ${index + 1}`,
+                materials: 'Premium Wood & Finishes'
+              })}
+              className={`group cursor-pointer rounded-2xl overflow-hidden shadow-lg border transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${isLightMode ? 'border-slate-200' : 'border-white/5'}`}
+            >
+              <div className="relative overflow-hidden">
+                <img 
+                  src={`${import.meta.env.BASE_URL}${imgSrc.slice(1)}`} 
+                  alt={`Gallery piece ${index + 1}`} 
+                  loading="lazy" 
+                  className="w-full h-auto block transition-transform duration-700 group-hover:scale-105" 
+                />
+              </div>
             </div>
           ))}
         </div>
       </main>
+
+      {/* QUICK VIEW MODAL */}
+      <QuickViewModal item={selectedItem} onClose={() => setSelectedItem(null)} />
     </>
   );
 }
