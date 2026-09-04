@@ -1,114 +1,259 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", "Libre Franklin", sans-serif;
+  --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Outfit", "Plus Jakarta Sans", sans-serif;
 }
 
-/* Global Light Mode Overrides */
+/* Custom Smooth Gradient Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
+  border-radius: 9999px;
+  border: 2px solid #090d16;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #34d399 0%, #22d3ee 50%, #60a5fa 100%);
+}
+
+/* Global Smooth Scrolling & Typography */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #090d16;
+  color: #f1f5f9;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Global Light Mode Base */
 body.light-mode {
   background-color: #f8fafc !important;
   color: #0f172a !important;
 }
 
-/* Carousel Animations */
+body.light-mode ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+  border-color: #f1f5f9;
+}
+
+/* Carousel Slide Transitions */
 .slide {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    transform: scale(1.08);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transform: scale(1.06);
 }
 
 .slide.active {
-    opacity: 1;
-    visibility: visible;
-    z-index: 10;
-    transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  z-index: 10;
+  transform: scale(1);
 }
 
-/* Invert Content Backgrounds */
-body.light-mode main .bg-gray-950,
-body.light-mode main .bg-gray-900,
-body.light-mode main .bg-gray-800,
-body.light-mode section .bg-gray-950,
-body.light-mode section .bg-gray-900,
-body.light-mode section .bg-gray-800,
-body.light-mode footer .bg-gray-950 {
-  background-color: #ffffff !important;
-  border-color: #cbd5e1 !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+/* Glassmorphism & Gradient Border Utilities */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-body.light-mode .bg-gray-900\/50,
-body.light-mode .bg-gray-950\/70,
-body.light-mode .bg-gray-950\/60,
-body.light-mode .bg-gray-800\/50,
-body.light-mode .bg-gray-900\/40 {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  border-color: #cbd5e1 !important;
+body.light-mode .glass-panel {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid rgba(226, 232, 240, 0.9) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Invert Text Colors */
-body.light-mode main .text-white, body.light-mode section .text-white, body.light-mode footer .text-white { color: #0f172a !important; }
-body.light-mode main .text-gray-100, body.light-mode main .text-gray-200, body.light-mode main .text-gray-300, body.light-mode main .text-gray-400,
-body.light-mode section .text-gray-100, body.light-mode section .text-gray-200, body.light-mode section .text-gray-300, body.light-mode section .text-gray-400,
-body.light-mode footer .text-gray-100, body.light-mode footer .text-gray-200, body.light-mode footer .text-gray-300, body.light-mode footer .text-gray-400 {
-  color: #334155 !important;
+/* Luxury Multi-Color Gradient Borders */
+.gradient-border-luxury {
+  position: relative;
+  background: rgba(15, 23, 42, 0.7);
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Protect Absolute Elements (Carousels/Overlays) */
-body.light-mode main .absolute .text-white, body.light-mode section .absolute .text-white, body.light-mode .slide .text-white, body.light-mode header .text-white { color: #ffffff !important; }
-body.light-mode main .absolute .text-gray-400, body.light-mode section .absolute .text-gray-400, body.light-mode .slide .text-gray-400 { color: #d1d5db !important; }
-body.light-mode .text-transparent { color: transparent !important; }
+.gradient-border-luxury::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  margin: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.5), rgba(6, 182, 212, 0.4), rgba(245, 158, 11, 0.3), rgba(15, 23, 42, 0.8));
+  opacity: 0.4;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
-/* Navbar & Form Fixes */
-body.light-mode nav .text-white { color: #0f172a !important; }
-body.light-mode nav .text-gray-400 { color: #334155 !important; }
-body.light-mode nav .text-gray-300 { color: #475569 !important; }
-body.light-mode .navbar-scrolled {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-  border-bottom-color: rgba(52, 211, 153, 0.5) !important;
-  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1) !important;
+.gradient-border-luxury:hover::before {
+  opacity: 1;
 }
-body.light-mode button.theme-toggle {
-  color: #0f172a !important; background-color: rgba(0, 0, 0, 0.05) !important; border-color: #cbd5e1 !important;
-}
-body.light-mode input, body.light-mode textarea { background-color: #f1f5f9 !important; color: #0f172a !important; border-color: #cbd5e1 !important; }
-body.light-mode input::placeholder, body.light-mode textarea::placeholder { color: #94a3b8 !important; }
 
-/* Gradients & Animations */
-body.light-mode .gradient-border-card {
-  background-image: none !important; background-color: #ffffff !important; border: 1px solid #cbd5e1 !important;
+body.light-mode .gradient-border-luxury {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
 }
-.gradient-border-card {
-  position: relative; background: rgba(17, 24, 39, 0.8); background-clip: padding-box; border: 1px solid transparent;
+
+body.light-mode .gradient-border-luxury:hover {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 15px 35px -10px rgba(14, 165, 233, 0.15) !important;
 }
-.gradient-border-card::before {
-  content: ''; position: absolute; inset: 0; z-index: -1; margin: -1px; border-radius: inherit;
-  background: linear-gradient(to bottom right, rgba(52, 211, 153, 0.5), rgba(6, 182, 212, 0.1), rgba(17, 24, 39, 1));
-  transition: opacity 0.5s ease; opacity: 0.3;
+
+/* Shimmer Button Effect */
+.btn-gradient-shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%);
+  background-size: 200% 200%;
+  animation: gradient-flow 6s ease infinite;
+  transition: all 0.3s ease;
 }
-.gradient-border-card:hover::before { opacity: 1; }
+
+.btn-gradient-shimmer::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(25deg);
+  transition: all 0.7s ease;
+}
+
+.btn-gradient-shimmer:hover::after {
+  left: 140%;
+}
+
+.btn-gradient-shimmer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4), 0 8px 10px -6px rgba(6, 182, 212, 0.4);
+}
+
+/* Gold / Amber Luxury Variant */
+.btn-amber-shimmer {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #b45309 100%);
+  transition: all 0.3s ease;
+}
+
+.btn-amber-shimmer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.5);
+}
+
+/* Linear-Gradient Text Animation */
+.animated-gradient-text {
+  background: linear-gradient(135deg, #34d399, #22d3ee, #60a5fa, #a78bfa, #34d399);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-flow 8s ease infinite;
+}
+
+.amber-gradient-text {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b, #ea580c, #fbbf24);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-flow 8s ease infinite;
+}
+
+/* Keyframes */
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
 @keyframes slow-pan {
-  0% { transform: scale(1.05) translate(0, 0); }
-  50% { transform: scale(1.1) translate(-1%, 1%); }
-  100% { transform: scale(1.05) translate(0, 0); }
+  0% { transform: scale(1.04) translate(0, 0); }
+  50% { transform: scale(1.1) translate(-1.5%, 1%); }
+  100% { transform: scale(1.04) translate(0, 0); }
 }
-.animate-pan { animation: slow-pan 20s ease-in-out infinite; }
+.animate-pan { animation: slow-pan 22s ease-in-out infinite; }
 
 @keyframes float-element {
-  0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
 }
+.animate-float { animation: float-element 5s ease-in-out infinite; }
 .animate-float-delay { animation: float-element 6s ease-in-out infinite; animation-delay: 2s; }
 
-@keyframes float-slow {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.08); }
 }
-.animate-bg-glow { animation: float-slow 15s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 4s ease-in-out infinite; }
 
+/* Dedicated Protected Classes (Never inverted in light mode!) */
+.keep-white, 
+.keep-white * {
+  color: #ffffff !important;
+}
+
+.keep-white-sub,
+.keep-white-sub * {
+  color: #cbd5e1 !important;
+}
+
+.keep-emerald,
+.keep-emerald * {
+  color: #34d399 !important;
+}
+
+.keep-cyan,
+.keep-cyan * {
+  color: #22d3ee !important;
+}
+
+/* Navbar Scrolled Light Mode */
+body.light-mode .navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-bottom-color: rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-mode nav .text-gray-300,
+body.light-mode nav .text-gray-400 {
+  color: #475569 !important;
+}
+
+/* Form Inputs in Light Mode */
+body.light-mode input, 
+body.light-mode textarea,
+body.light-mode select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+body.light-mode input::placeholder, 
+body.light-mode textarea::placeholder {
+  color: #94a3b8 !important;
+}

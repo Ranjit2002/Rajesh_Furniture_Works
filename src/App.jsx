@@ -6,6 +6,9 @@ import 'aos/dist/aos.css';
 // Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
+import FloatingBackToTop from './components/FloatingBackToTop';
+import { scrollToTop } from './utils/scrollUtils';
 
 // Pages
 import Home from './pages/Home';
@@ -21,20 +24,21 @@ export default function App() {
   // Initialize AOS
   useEffect(() => {
     AOS.init({
-      duration: 800,
+      duration: 700,
       easing: 'ease-out-cubic',
       once: true, 
-      offset: 50,
+      offset: 30,
     });
   }, []);
 
-  // ONLY refresh on page change, NOT on theme change (stops the bouncing!)
+  // Refresh AOS & Scroll to top on route change
   useEffect(() => {
+    scrollToTop({ smooth: false });
     AOS.refresh();
   }, [location.pathname]);
   
   return (
-    <div className="overflow-x-hidden antialiased font-sans min-h-screen selection:bg-emerald-500/30">
+    <div className="overflow-x-hidden antialiased font-sans min-h-screen selection:bg-emerald-500/30 selection:text-emerald-200">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -45,6 +49,8 @@ export default function App() {
         <Route path="/bedroom" element={<Bedroom />} />
       </Routes>
       <Footer />
+      <FloatingWhatsApp />
+      <FloatingBackToTop />
     </div>
   );
 }
