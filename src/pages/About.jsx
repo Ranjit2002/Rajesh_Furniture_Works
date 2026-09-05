@@ -1,34 +1,36 @@
-import { Link } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
+import { Link } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 const milestones = [
   {
-    year: '2004',
-    title: 'The Humble Inception',
-    desc: 'Founded by master carpenter Rajesh Vishwakarma with two workbenches, hand-planes, and an unyielding commitment to mortise-and-tenon joints.'
+    year: "2004",
+    title: "The Humble Inception",
+    desc: "Founded by master carpenter Rajesh Vishwakarma with two workbenches, hand-planes, and an unyielding commitment to mortise-and-tenon joints.",
   },
   {
-    year: '2011',
-    title: 'Thane Workshop Expansion',
-    desc: 'Moved to our dedicated manufacturing and seasoning facility in Thane, Maharashtra integrating modern precision panel saws and edge-banding machinery.'
+    year: "2011",
+    title: "Thane Workshop Expansion",
+    desc: "Moved to our dedicated manufacturing and seasoning facility in Thane, Maharashtra integrating modern precision panel saws and edge-banding machinery.",
   },
   {
-    year: '2018',
-    title: 'Architectural Joinery & Modular Revolution',
-    desc: 'Pioneered turnkey residential woodwork, partnering with leading interior designers in Mumbai and Thane for luxury apartment fitouts.'
+    year: "2018",
+    title: "Architectural Joinery & Modular Revolution",
+    desc: "Pioneered turnkey residential woodwork, partnering with leading interior designers in Mumbai and Thane for luxury apartment fitouts.",
   },
   {
-    year: '2024+',
-    title: '10,000+ Heirlooms Delivered',
-    desc: 'Celebrated two decades of excellence. Trusted by thousands of discerning families with a 98% direct referral and repeat client rate.'
-  }
+    year: "2024+",
+    title: "10,000+ Heirlooms Delivered",
+    desc: "Celebrated two decades of excellence. Trusted by thousands of discerning families with a 98% direct referral and repeat client rate.",
+  },
 ];
 
 export default function About() {
   const { isLightMode } = useTheme();
 
   return (
-    <main className={`overflow-hidden transition-colors duration-500 ${isLightMode ? 'bg-white text-slate-900' : 'bg-gray-950 text-white'}`}>
+    <main
+      className={`overflow-hidden transition-colors duration-500 ${isLightMode ? "bg-white text-slate-900" : "bg-gray-950 text-white"}`}
+    >
       {/* 1. HERO SECTION WITH GRADIENT OVERLAY */}
       <header className="relative h-[72vh] min-h-[600px] w-full overflow-hidden flex items-center justify-center text-center">
         {/* Background Image with Pan Animation */}
@@ -45,7 +47,11 @@ export default function About() {
         <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/40 via-transparent to-cyan-950/40 z-0"></div>
 
         {/* Hero Text */}
-        <div className="relative z-10 px-6 max-w-4xl mx-auto mt-16" data-aos="fade-down" data-aos-duration="1000">
+        <div
+          className="relative z-10 px-6 max-w-4xl mx-auto mt-16"
+          data-aos="fade-down"
+          data-aos-duration="1000"
+        >
           <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-black/60 backdrop-blur-md border border-emerald-400/40 text-emerald-400 keep-emerald text-xs font-black tracking-widest uppercase mb-6 shadow-[0_0_25px_rgba(52,211,153,0.3)]">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
             Heritage & Craftsmanship Since 2004
@@ -53,13 +59,13 @@ export default function About() {
 
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 tracking-tight text-white keep-white drop-shadow-2xl leading-tight">
             Crafting Legacies In <br />
-            <span className="animated-gradient-text">
-              Natural Wood.
-            </span>
+            <span className="animated-gradient-text">Natural Wood.</span>
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-gray-200 keep-white-sub max-w-2xl mx-auto drop-shadow-md leading-relaxed">
-            For over two decades, Rajesh Furniture Works has united the soul of traditional Indian woodcraft with the precision of contemporary European architectural engineering.
+            For over two decades, Rajesh Furniture Works has united the soul of
+            traditional Indian woodcraft with the precision of contemporary
+            European architectural engineering.
           </p>
         </div>
       </header>
@@ -69,43 +75,73 @@ export default function About() {
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-cyan-600/10 rounded-full blur-[140px] pointer-events-none -translate-y-1/2"></div>
 
         <div className="flex flex-col lg:flex-row items-center gap-16">
-
           <div className="w-full lg:w-1/2 relative z-10" data-aos="fade-right">
             <span className="text-xs font-black tracking-widest text-emerald-500 uppercase block mb-3">
               The Journey
             </span>
-            <h2 className={`text-3xl sm:text-5xl font-black tracking-tight mb-8 ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
-              From a local workshop to a <span className="animated-gradient-text">bespoke design powerhouse.</span>
+            <h2
+              className={`text-3xl sm:text-5xl font-black tracking-tight mb-8 ${isLightMode ? "text-slate-900" : "text-white"}`}
+            >
+              From a local workshop to a{" "}
+              <span className="animated-gradient-text">
+                bespoke design powerhouse.
+              </span>
             </h2>
 
-            <div className={`space-y-6 text-base sm:text-lg leading-relaxed ${isLightMode ? 'text-slate-600' : 'text-gray-300'}`}>
+            <div
+              className={`space-y-6 text-base sm:text-lg leading-relaxed ${isLightMode ? "text-slate-600" : "text-gray-300"}`}
+            >
               <p>
-                What started in 2004 as a single workbench dedicated to bespoke timber cabinetry has grown into one of Mumbai & Thane’s most trusted custom interior carpentry establishments. We recognized early on that furniture isn't just functional storage; it is the silent witness to your life's most cherished memories.
+                What started in 2004 as a single workbench dedicated to bespoke
+                timber cabinetry has grown into one of Mumbai & Thane’s most
+                trusted custom interior carpentry establishments. We recognized
+                early on that furniture isn't just functional storage; it is the
+                silent witness to your life's most cherished memories.
               </p>
               <p>
-                Our philosophy is simple: we reject disposable flat-pack furniture. By sourcing certified sustainable Burma Teak, natural veneers, and moisture-proof BWP 710 marine plywood, our master craftsmen ensure that every cut, joinery groove, and hand polish withstands the test of time.
+                Our philosophy is simple: we reject disposable flat-pack
+                furniture. By sourcing certified sustainable Burma Teak, natural
+                veneers, and moisture-proof BWP 710 marine plywood, our master
+                craftsmen ensure that every cut, joinery groove, and hand polish
+                withstands the test of time.
               </p>
             </div>
 
             {/* Metrics Counters */}
-            <div className="grid grid-cols-2 gap-6 mt-10">
-              <div className={`p-6 rounded-2xl border ${isLightMode ? 'bg-slate-50 border-slate-200 shadow-sm' : 'gradient-border-luxury'}`}>
-                <span className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-cyan-500">
+            <div className="grid grid-cols-2 gap-3 sm:gap-6 mt-10">
+              <div
+                className={`p-4 sm:p-6 rounded-2xl border ${isLightMode ? "bg-slate-50 border-slate-200 shadow-sm" : "gradient-border-luxury"}`}
+              >
+                <span className="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-cyan-500">
                   20+
                 </span>
-                <p className={`text-xs tracking-wider font-bold uppercase mt-1 ${isLightMode ? 'text-slate-500' : 'text-gray-400'}`}>Years of Mastery</p>
+                <p
+                  className={`text-[10px] sm:text-xs tracking-wider font-bold uppercase mt-1 ${isLightMode ? "text-slate-500" : "text-gray-400"}`}
+                >
+                  Years of Mastery
+                </p>
               </div>
-              <div className={`p-6 rounded-2xl border ${isLightMode ? 'bg-slate-50 border-slate-200 shadow-sm' : 'gradient-border-luxury'}`}>
-                <span className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">
+              <div
+                className={`p-4 sm:p-6 rounded-2xl border ${isLightMode ? "bg-slate-50 border-slate-200 shadow-sm" : "gradient-border-luxury"}`}
+              >
+                <span className="text-2xl sm:text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500">
                   10,000+
                 </span>
-                <p className={`text-xs tracking-wider font-bold uppercase mt-1 ${isLightMode ? 'text-slate-500' : 'text-gray-400'}`}>Heirloom Pieces</p>
+                <p
+                  className={`text-[10px] sm:text-xs tracking-wider font-bold uppercase mt-1 ${isLightMode ? "text-slate-500" : "text-gray-400"}`}
+                >
+                  Heirloom Pieces
+                </p>
               </div>
             </div>
           </div>
 
           {/* Double Image Frame */}
-          <div className="w-full lg:w-1/2 relative h-[520px]" data-aos="fade-left" data-aos-delay="200">
+          <div
+            className="w-full lg:w-1/2 relative h-[520px]"
+            data-aos="fade-left"
+            data-aos-delay="200"
+          >
             <div className="absolute top-0 right-0 w-4/5 h-[380px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 transition-transform duration-700 hover:scale-[1.02] z-10">
               <img
                 src="https://images.unsplash.com/photo-1600607686527-6fb886090705?auto=format&fit=crop&q=80&w=1000"
@@ -125,17 +161,25 @@ export default function About() {
       </section>
 
       {/* 3. 20-YEAR MILESTONES TIMELINE */}
-      <section className={`py-24 border-y transition-colors duration-500 ${isLightMode ? 'bg-slate-50 border-slate-200' : 'bg-gray-900/40 border-white/10'}`}>
+      <section
+        className={`py-24 border-y transition-colors duration-500 ${isLightMode ? "bg-slate-50 border-slate-200" : "bg-gray-900/40 border-white/10"}`}
+      >
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16" data-aos="fade-up">
             <span className="text-xs font-black tracking-widest text-emerald-500 uppercase block mb-3">
               Evolution of Excellence
             </span>
-            <h2 className={`text-3xl sm:text-5xl font-black tracking-tight mb-4 ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
-              Two Decades of <span className="animated-gradient-text">Milestones</span>
+            <h2
+              className={`text-3xl sm:text-5xl font-black tracking-tight mb-4 ${isLightMode ? "text-slate-900" : "text-white"}`}
+            >
+              Two Decades of{" "}
+              <span className="animated-gradient-text">Milestones</span>
             </h2>
-            <p className={`max-w-xl mx-auto text-sm ${isLightMode ? 'text-slate-600' : 'text-gray-400'}`}>
-              Tracing our growth from artisanal hand carpentry to turnkey architectural joinery.
+            <p
+              className={`max-w-xl mx-auto text-sm ${isLightMode ? "text-slate-600" : "text-gray-400"}`}
+            >
+              Tracing our growth from artisanal hand carpentry to turnkey
+              architectural joinery.
             </p>
           </div>
 
@@ -145,16 +189,23 @@ export default function About() {
                 key={idx}
                 data-aos="fade-up"
                 data-aos-delay={idx * 150}
-                className={`p-8 rounded-3xl border transition-all duration-300 relative group ${isLightMode ? 'bg-white border-slate-200 hover:border-emerald-500 shadow-sm' : 'glass-panel border-white/10 hover:border-emerald-400/50'
-                  }`}
+                className={`p-8 rounded-3xl border transition-all duration-300 relative group ${
+                  isLightMode
+                    ? "bg-white border-slate-200 hover:border-emerald-500 shadow-sm"
+                    : "glass-panel border-white/10 hover:border-emerald-400/50"
+                }`}
               >
                 <div className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-cyan-500 mb-4 group-hover:scale-105 transition-transform inline-block">
                   {m.year}
                 </div>
-                <h3 className={`text-lg font-black mb-3 group-hover:text-emerald-500 transition-colors ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
+                <h3
+                  className={`text-lg font-black mb-3 group-hover:text-emerald-500 transition-colors ${isLightMode ? "text-slate-900" : "text-white"}`}
+                >
                   {m.title}
                 </h3>
-                <p className={`text-xs leading-relaxed ${isLightMode ? 'text-slate-600' : 'text-gray-400'}`}>
+                <p
+                  className={`text-xs leading-relaxed ${isLightMode ? "text-slate-600" : "text-gray-400"}`}
+                >
                   {m.desc}
                 </p>
               </div>
@@ -169,53 +220,83 @@ export default function About() {
           <span className="text-xs font-black tracking-widest text-cyan-500 uppercase block mb-3">
             What Drives Us
           </span>
-          <h2 className={`text-3xl sm:text-5xl font-black tracking-tight mb-4 ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
-            Our Guiding <span className="animated-gradient-text">Core Values</span>
+          <h2
+            className={`text-3xl sm:text-5xl font-black tracking-tight mb-4 ${isLightMode ? "text-slate-900" : "text-white"}`}
+          >
+            Our Guiding{" "}
+            <span className="animated-gradient-text">Core Values</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-cyan-400 mx-auto rounded-full mt-4"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
           {/* Card 1 */}
-          <div data-aos="fade-up" className={`p-8 rounded-3xl group border transition-all ${isLightMode ? 'bg-white border-slate-200 shadow-md' : 'gradient-border-luxury'}`}>
+          <div
+            data-aos="fade-up"
+            className={`p-8 rounded-3xl group border transition-all ${isLightMode ? "bg-white border-slate-200 shadow-md" : "gradient-border-luxury"}`}
+          >
             <div className="w-14 h-14 rounded-2xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-500 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:rotate-6 transition-all">
               🌱
             </div>
-            <h3 className={`text-xl font-black mb-3 group-hover:text-emerald-500 transition-colors ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
+            <h3
+              className={`text-xl font-black mb-3 group-hover:text-emerald-500 transition-colors ${isLightMode ? "text-slate-900" : "text-white"}`}
+            >
               Sustainability & Certified Timber
             </h3>
-            <p className={`text-sm leading-relaxed ${isLightMode ? 'text-slate-600' : 'text-gray-400'}`}>
-              We exclusively use seasoned hardwoods, plantation timber, and eco-friendly polyurethane finishes that safeguard indoor air quality and protect forests.
+            <p
+              className={`text-sm leading-relaxed ${isLightMode ? "text-slate-600" : "text-gray-400"}`}
+            >
+              We exclusively use seasoned hardwoods, plantation timber, and
+              eco-friendly polyurethane finishes that safeguard indoor air
+              quality and protect forests.
             </p>
           </div>
 
           {/* Card 2 */}
-          <div data-aos="fade-up" data-aos-delay="200" className={`p-8 rounded-3xl group border transition-all ${isLightMode ? 'bg-white border-slate-200 shadow-md' : 'gradient-border-luxury'}`}>
+          <div
+            data-aos="fade-up"
+            data-aos-delay="200"
+            className={`p-8 rounded-3xl group border transition-all ${isLightMode ? "bg-white border-slate-200 shadow-md" : "gradient-border-luxury"}`}
+          >
             <div className="w-14 h-14 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-500 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:-rotate-6 transition-all">
               📐
             </div>
-            <h3 className={`text-xl font-black mb-3 group-hover:text-cyan-500 transition-colors ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
+            <h3
+              className={`text-xl font-black mb-3 group-hover:text-cyan-500 transition-colors ${isLightMode ? "text-slate-900" : "text-white"}`}
+            >
               Millimetric Precision
             </h3>
-            <p className={`text-sm leading-relaxed ${isLightMode ? 'text-slate-600' : 'text-gray-400'}`}>
-              We do not believe in mass factory compromises. Every joint is hand-planed, every slide is laser aligned, ensuring tight tolerances and squeak-free operation.
+            <p
+              className={`text-sm leading-relaxed ${isLightMode ? "text-slate-600" : "text-gray-400"}`}
+            >
+              We do not believe in mass factory compromises. Every joint is
+              hand-planed, every slide is laser aligned, ensuring tight
+              tolerances and squeak-free operation.
             </p>
           </div>
 
           {/* Card 3 */}
-          <div data-aos="fade-up" data-aos-delay="400" className={`p-8 rounded-3xl group border transition-all ${isLightMode ? 'bg-white border-slate-200 shadow-md' : 'gradient-border-luxury'}`}>
+          <div
+            data-aos="fade-up"
+            data-aos-delay="400"
+            className={`p-8 rounded-3xl group border transition-all ${isLightMode ? "bg-white border-slate-200 shadow-md" : "gradient-border-luxury"}`}
+          >
             <div className="w-14 h-14 rounded-2xl bg-purple-500/15 border border-purple-500/30 text-purple-500 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 group-hover:rotate-6 transition-all">
               🤝
             </div>
-            <h3 className={`text-xl font-black mb-3 group-hover:text-purple-500 transition-colors ${isLightMode ? 'text-slate-900' : 'text-white'}`}>
+            <h3
+              className={`text-xl font-black mb-3 group-hover:text-purple-500 transition-colors ${isLightMode ? "text-slate-900" : "text-white"}`}
+            >
               Honest Client Transparency
             </h3>
-            <p className={`text-sm leading-relaxed ${isLightMode ? 'text-slate-600' : 'text-gray-400'}`}>
-              Transparent itemized pricing with zero hidden costs. Clients are invited to our Kasheli workshop anytime to inspect raw timber before polishing begins.
+            <p
+              className={`text-sm leading-relaxed ${isLightMode ? "text-slate-600" : "text-gray-400"}`}
+            >
+              Transparent itemized pricing with zero hidden costs. Clients are
+              invited to our Kasheli workshop anytime to inspect raw timber
+              before polishing begins.
             </p>
           </div>
-
         </div>
       </section>
 
@@ -237,7 +318,8 @@ export default function About() {
           </h2>
 
           <p className="text-gray-200 keep-white-sub text-base sm:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            Schedule a visit to our Kasheli workshop or invite us over to inspect your space and discuss custom woodworking blueprints.
+            Schedule a visit to our Kasheli workshop or invite us over to
+            inspect your space and discuss custom woodworking blueprints.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
