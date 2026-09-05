@@ -881,7 +881,7 @@ export default function Home() {
                   href="tel:+919820879871"
                   className="w-full sm:w-auto px-4 sm:px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-white keep-white font-bold text-sm tracking-wider backdrop-blur-md transition-all flex items-center justify-center gap-2 cursor-pointer whitespace-nowrap"
                 >
-                  <span>📞 CALL: +91 98208 79871</span>
+                  <span>📞 CALL: +91 9820879871</span>
                 </a>
 
                 <Link
