@@ -182,7 +182,7 @@ export default function Contact() {
                         Chat on WhatsApp
                       </span>
                       <span className="text-[11px] font-bold opacity-90 sm:opacity-100">
-                        (+91 98208 79871)
+                        (+91 9820879871)
                       </span>
                     </div>
                     <span className="text-sm font-bold">→</span>
