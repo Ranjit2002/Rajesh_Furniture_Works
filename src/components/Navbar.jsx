@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from '../context/ThemeContext';
+import { basePath } from '../utils/paths';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,9 +23,28 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Helper to accurately match active link regardless of trailing slashes or basePath
+  const isLinkActive = (href) => {
+    if (!pathname) return href === '/';
+    let current = pathname;
+    if (basePath && current.startsWith(basePath)) {
+      current = current.slice(basePath.length);
+    }
+    const cleanCurrent = current.length > 1 && current.endsWith('/') ? current.slice(0, -1) : (current || '/');
+    const cleanHref = href.length > 1 && href.endsWith('/') ? href.slice(0, -1) : (href || '/');
+
+    if (cleanHref === '/') {
+      return cleanCurrent === '/';
+    }
+    if (cleanHref === '/collections') {
+      return cleanCurrent === '/collections' || cleanCurrent === '/living' || cleanCurrent === '/bedroom';
+    }
+    return cleanCurrent === cleanHref || cleanCurrent.startsWith(`${cleanHref}/`);
+  };
+
   // Mobile Menu Links
   const MobileNavLink = ({ href, children }) => {
-    const isActive = pathname === href;
+    const isActive = isLinkActive(href);
     return (
       <Link 
         href={href} 
@@ -97,7 +117,7 @@ export default function Navbar() {
             { path: '/collections', label: 'COLLECTIONS' },
             { path: '/contact', label: 'CONTACT' }
           ].map(({ path, label }) => {
-            const isActive = pathname === path;
+            const isActive = isLinkActive(path);
             return (
               <Link 
                 key={path} 
