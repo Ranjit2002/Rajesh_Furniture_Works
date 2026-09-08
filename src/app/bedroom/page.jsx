@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useTheme } from '../../context/ThemeContext';
 import QuickViewModal from '../../components/QuickViewModal';
+import { getAssetPath } from '../../utils/paths';
 
 export const bedroomData = [
   { id: 101, src: '/img/bedroom_1.jpeg', name: 'Royal Teak Master Platform Bed', materials: 'Solid Burma Teak, Hydraulic Storage Lift, PU Polish' },
@@ -91,7 +92,7 @@ export default function Bedroom() {
             >
               <div className="relative h-80 w-full overflow-hidden bg-gray-900">
                 <img 
-                  src={item.src} 
+                  src={getAssetPath(item.src)} 
                   alt={item.name} 
                   loading="lazy" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 

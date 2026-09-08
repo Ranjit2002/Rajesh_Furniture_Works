@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { getAssetPath } from '../utils/paths';
 
 export default function QuickViewModal({ item, onClose }) {
   // Prevent background scrolling when modal is open
@@ -13,7 +14,7 @@ export default function QuickViewModal({ item, onClose }) {
 
   if (!item) return null;
 
-  const imageSrc = item.src.startsWith('/') ? item.src : `/${item.src}`;
+  const imageSrc = getAssetPath(item.src);
 
   const whatsappMessage = encodeURIComponent(
     `Hello Rajesh Furniture Works, I am interested in customizing / ordering this piece: "${item.name}" (Materials: ${item.materials || 'Premium Hardwood'}). Could you please share more details and pricing?`

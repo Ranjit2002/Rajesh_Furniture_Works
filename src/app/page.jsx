@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useTheme } from "../context/ThemeContext";
+import { getAssetPath } from "../utils/paths";
 
 const slidesData = [
   {
@@ -154,7 +155,7 @@ export default function Home() {
           >
             {/* Image with slow pan */}
             <img
-              src={slide.img}
+              src={getAssetPath(slide.img)}
               alt={slide.title}
               className="absolute inset-0 w-full h-full object-cover z-0 animate-pan"
             />
@@ -367,7 +368,7 @@ export default function Home() {
               >
                 {/* Background Image */}
                 <img
-                  src={cat.img}
+                  src={getAssetPath(cat.img)}
                   alt={cat.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -571,7 +572,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-cyan-500/20 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl"></div>
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 <img
-                  src="/img/hall_11.jpeg"
+                  src={getAssetPath("/img/hall_11.jpeg")}
                   alt="Living room interior woodwork"
                   className="w-full h-[440px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -602,7 +603,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl"></div>
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 <img
-                  src="/img/kichen_1.jpeg"
+                  src={getAssetPath("/img/kichen_1.jpeg")}
                   alt="Modular kitchen design"
                   className="w-full h-[440px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />

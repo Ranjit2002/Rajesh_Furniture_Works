@@ -1,10 +1,16 @@
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = isProd ? '/Rajesh_Furniture_Works' : '';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/Rajesh_Furniture_Works',
+  basePath: basePath,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
+  trailingSlash: true,
   reactStrictMode: true,
   devIndicators: false,
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',

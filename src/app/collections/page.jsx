@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { useTheme } from '../../context/ThemeContext';
 import QuickViewModal from '../../components/QuickViewModal';
+import { getAssetPath } from '../../utils/paths';
 
 export const allCollectionsData = [
   { id: 1, src: '/img/hall_1.jpg', name: 'Minimalist Lounge & Fluted TV Unit', category: 'living', room: 'Living Room', materials: 'Solid Teak, Fluted Louvers, Warm LED' },
@@ -215,7 +216,7 @@ export default function Collections() {
                 {/* Image Container */}
                 <div className="relative h-72 w-full overflow-hidden bg-gray-900">
                   <img 
-                    src={item.src} 
+                    src={getAssetPath(item.src)} 
                     alt={item.name} 
                     loading="lazy" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 

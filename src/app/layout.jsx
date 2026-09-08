@@ -5,11 +5,13 @@ import Footer from '../components/Footer';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
 import FloatingBackToTop from '../components/FloatingBackToTop';
 
+import { basePath } from '../utils/paths';
+
 export const metadata = {
   title: 'RAJESH FURNITURE WORKS | Bespoke Woodcraft & Interiors',
   description: 'Rajesh Furniture Works - Bespoke architectural furniture, custom woodcraft, modular kitchens, and luxury home interiors since 2004.',
   icons: {
-    icon: '/favicon.svg',
+    icon: `${basePath}/favicon.svg`,
   },
 };
 
