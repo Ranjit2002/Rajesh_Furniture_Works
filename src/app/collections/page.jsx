@@ -1,39 +1,41 @@
+'use client';
+
 import { useState, useMemo } from 'react';
-import { NavLink } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
-import QuickViewModal from '../components/QuickViewModal';
+import Link from 'next/link';
+import { useTheme } from '../../context/ThemeContext';
+import QuickViewModal from '../../components/QuickViewModal';
 
 export const allCollectionsData = [
-  { id: 1, src: 'img/hall_1.jpg', name: 'Minimalist Lounge & Fluted TV Unit', category: 'living', room: 'Living Room', materials: 'Solid Teak, Fluted Louvers, Warm LED' },
-  { id: 2, src: 'img/bedroom_1.jpeg', name: 'Royal Teak Master Platform Bed', category: 'bedroom', room: 'Bedroom', materials: 'Burma Teak, Hydraulic Storage' },
-  { id: 3, src: 'img/hall_2.avif', name: 'Architectural Partition & Display Credenza', category: 'living', room: 'Living Room', materials: 'Walnut Finish, Rose Gold Trims' },
-  { id: 4, src: 'img/bedroom_2.jpeg', name: 'Modern Floating Bed & Nightstands', category: 'bedroom', room: 'Bedroom', materials: 'Oak Wood, Concealed Lighting' },
-  { id: 5, src: 'img/kichen_1.jpeg', name: 'High-Gloss Modular Kitchen Suite', category: 'kitchen', room: 'Kitchen', materials: 'BWP 710 Marine Ply, Hafele Tandem' },
-  { id: 6, src: 'img/hall_3.jpeg', name: 'Curved Sofa & Center Coffee Ensemble', category: 'living', room: 'Living Room', materials: 'Solid Ash Wood, Premium Bouclé' },
-  { id: 7, src: 'img/bedroom_3.jpeg', name: 'Contemporary Wardrobe & Vanity Nook', category: 'bedroom', room: 'Bedroom', materials: 'Frosted Glass, Warm Beech Veneer' },
-  { id: 8, src: 'img/cupboard_1.jpeg', name: 'Floor-to-Ceiling Luxury Wardrobe', category: 'wardrobe', room: 'Wardrobe', materials: 'Acrylic Finish, Sensor LED Lights' },
-  { id: 9, src: 'img/hall_4.jpeg', name: 'Geometric Wall Paneling & Media Unit', category: 'living', room: 'Living Room', materials: 'Teak Veneer, Matt Charcoal PU' },
-  { id: 10, src: 'img/mandir_1.jpeg', name: 'Sacred Teak Wood Pooja Mandir', category: 'mandir', room: 'Mandir', materials: 'Hand Carved Teak, Brass Bells' },
-  { id: 11, src: 'img/bedroom_5.jpeg', name: 'Upholstered Headboard Suite & Dresser', category: 'bedroom', room: 'Bedroom', materials: 'Mahogany, Velvet Fabric' },
-  { id: 12, src: 'img/dining_1.jpeg', name: '6-Seater Solid Timber Dining Table', category: 'kitchen', room: 'Dining', materials: 'Solid Walnut Wood, Brass Inlays' },
-  { id: 13, src: 'img/hall_5.jpeg', name: 'Executive Home Study & Bookshelf', category: 'living', room: 'Living Room', materials: 'Solid Teak, Toughened Glass' },
-  { id: 14, src: 'img/kitchen_2.jpeg', name: 'Ergonomic Parallel Modular Kitchen', category: 'kitchen', room: 'Kitchen', materials: 'Anti-Scratch Laminate, Stainless Steel' },
-  { id: 15, src: 'img/bedroom_7.jpeg', name: 'Minimalist Bedroom with Curved Arch Accent', category: 'bedroom', room: 'Bedroom', materials: 'Birch Plywood, PU Satin Finish' },
-  { id: 16, src: 'img/cupboard_2.jpeg', name: 'Sliding Glass & Profile Wardrobe', category: 'wardrobe', room: 'Wardrobe', materials: 'Smoked Glass, Aluminium Profile' },
-  { id: 17, src: 'img/hall_6.jpeg', name: 'Contemporary Foyer & Console Set', category: 'living', room: 'Living Room', materials: 'Natural Oak, Marble Top' },
-  { id: 18, src: 'img/bedroom_8.jpeg', name: 'Warm Scandinavian Bedroom Joinery', category: 'bedroom', room: 'Bedroom', materials: 'Pine Wood, Acoustic Slats' },
-  { id: 19, src: 'img/mandir_2.jpeg', name: 'Backlit Onyx & Teak Sacred Mandir', category: 'mandir', room: 'Mandir', materials: 'Burma Teak, Translucent Stone' },
-  { id: 20, src: 'img/hall_7.jpeg', name: 'Luxury Villa Great Room Entertainment Unit', category: 'living', room: 'Living Room', materials: 'Teak Veneer, Italian PU Coat' },
-  { id: 21, src: 'img/bedroom_9.jpeg', name: 'Integrated Study & Bed Alcove', category: 'bedroom', room: 'Bedroom', materials: 'Engineered Hardwood, Satin Grey' },
-  { id: 22, src: 'img/hall_8.jpeg', name: 'Custom Bar Unit & Display Showcase', category: 'living', room: 'Living Room', materials: 'Smoked Oak, Mirror Backing' },
-  { id: 23, src: 'img/bedroom_10.jpeg', name: 'Master Suite with Walk-In Closet Joinery', category: 'bedroom', room: 'Bedroom', materials: 'Natural Veneer, Soft-Close Drawers' },
-  { id: 24, src: 'img/balcony_9.jpeg', name: 'Weather-Resistant Balcony Deck & Lounge', category: 'living', room: 'Balcony', materials: 'Treated Teak, Water-Shield Coat' },
-  { id: 25, src: 'img/hall_10.jpeg', name: 'Sculptural Ceiling & Media Wall Paneling', category: 'living', room: 'Living Room', materials: 'Acoustic Wood Louvers, PU Finish' },
-  { id: 26, src: 'img/hall_11.jpeg', name: 'Curated Open-Concept Hallway & Dining', category: 'living', room: 'Living Room', materials: 'Solid Teak, BWP 710 Marine Ply' },
-  { id: 27, src: 'img/hall_12.jpeg', name: 'Luxury Penthouse Living Room Setting', category: 'living', room: 'Living Room', materials: 'Custom Joinery, Brass Highlights' },
-  { id: 28, src: 'img/cupboard_3.jpeg', name: 'Walk-In Wardrobe with Island Drawer Unit', category: 'wardrobe', room: 'Wardrobe', materials: 'Fluted Glass, Velvet Lined Trays' },
-  { id: 29, src: 'img/kitchen_3.jpeg', name: 'L-Shaped Acrylic Modular Kitchen', category: 'kitchen', room: 'Kitchen', materials: 'Marine Ply, Hettich Tandem Box' },
-  { id: 30, src: 'img/mandir_3.jpeg', name: 'Compact Wall-Mounted Designer Mandir', category: 'mandir', room: 'Mandir', materials: 'CNC Jali Work, Solid Teak' }
+  { id: 1, src: '/img/hall_1.jpg', name: 'Minimalist Lounge & Fluted TV Unit', category: 'living', room: 'Living Room', materials: 'Solid Teak, Fluted Louvers, Warm LED' },
+  { id: 2, src: '/img/bedroom_1.jpeg', name: 'Royal Teak Master Platform Bed', category: 'bedroom', room: 'Bedroom', materials: 'Burma Teak, Hydraulic Storage' },
+  { id: 3, src: '/img/hall_2.avif', name: 'Architectural Partition & Display Credenza', category: 'living', room: 'Living Room', materials: 'Walnut Finish, Rose Gold Trims' },
+  { id: 4, src: '/img/bedroom_2.jpeg', name: 'Modern Floating Bed & Nightstands', category: 'bedroom', room: 'Bedroom', materials: 'Oak Wood, Concealed Lighting' },
+  { id: 5, src: '/img/kichen_1.jpeg', name: 'High-Gloss Modular Kitchen Suite', category: 'kitchen', room: 'Kitchen', materials: 'BWP 710 Marine Ply, Hafele Tandem' },
+  { id: 6, src: '/img/hall_3.jpeg', name: 'Curved Sofa & Center Coffee Ensemble', category: 'living', room: 'Living Room', materials: 'Solid Ash Wood, Premium Bouclé' },
+  { id: 7, src: '/img/bedroom_3.jpeg', name: 'Contemporary Wardrobe & Vanity Nook', category: 'bedroom', room: 'Bedroom', materials: 'Frosted Glass, Warm Beech Veneer' },
+  { id: 8, src: '/img/cupboard_1.jpeg', name: 'Floor-to-Ceiling Luxury Wardrobe', category: 'wardrobe', room: 'Wardrobe', materials: 'Acrylic Finish, Sensor LED Lights' },
+  { id: 9, src: '/img/hall_4.jpeg', name: 'Geometric Wall Paneling & Media Unit', category: 'living', room: 'Living Room', materials: 'Teak Veneer, Matt Charcoal PU' },
+  { id: 10, src: '/img/mandir_1.jpeg', name: 'Sacred Teak Wood Pooja Mandir', category: 'mandir', room: 'Mandir', materials: 'Hand Carved Teak, Brass Bells' },
+  { id: 11, src: '/img/bedroom_5.jpeg', name: 'Upholstered Headboard Suite & Dresser', category: 'bedroom', room: 'Bedroom', materials: 'Mahogany, Velvet Fabric' },
+  { id: 12, src: '/img/dining_1.jpeg', name: '6-Seater Solid Timber Dining Table', category: 'kitchen', room: 'Dining', materials: 'Solid Walnut Wood, Brass Inlays' },
+  { id: 13, src: '/img/hall_5.jpeg', name: 'Executive Home Study & Bookshelf', category: 'living', room: 'Living Room', materials: 'Solid Teak, Toughened Glass' },
+  { id: 14, src: '/img/kitchen_2.jpeg', name: 'Ergonomic Parallel Modular Kitchen', category: 'kitchen', room: 'Kitchen', materials: 'Anti-Scratch Laminate, Stainless Steel' },
+  { id: 15, src: '/img/bedroom_7.jpeg', name: 'Minimalist Bedroom with Curved Arch Accent', category: 'bedroom', room: 'Bedroom', materials: 'Birch Plywood, PU Satin Finish' },
+  { id: 16, src: '/img/cupboard_2.jpeg', name: 'Sliding Glass & Profile Wardrobe', category: 'wardrobe', room: 'Wardrobe', materials: 'Smoked Glass, Aluminium Profile' },
+  { id: 17, src: '/img/hall_6.jpeg', name: 'Contemporary Foyer & Console Set', category: 'living', room: 'Living Room', materials: 'Natural Oak, Marble Top' },
+  { id: 18, src: '/img/bedroom_8.jpeg', name: 'Warm Scandinavian Bedroom Joinery', category: 'bedroom', room: 'Bedroom', materials: 'Pine Wood, Acoustic Slats' },
+  { id: 19, src: '/img/mandir_2.jpeg', name: 'Backlit Onyx & Teak Sacred Mandir', category: 'mandir', room: 'Mandir', materials: 'Burma Teak, Translucent Stone' },
+  { id: 20, src: '/img/hall_7.jpeg', name: 'Luxury Villa Great Room Entertainment Unit', category: 'living', room: 'Living Room', materials: 'Teak Veneer, Italian PU Coat' },
+  { id: 21, src: '/img/bedroom_9.jpeg', name: 'Integrated Study & Bed Alcove', category: 'bedroom', room: 'Bedroom', materials: 'Engineered Hardwood, Satin Grey' },
+  { id: 22, src: '/img/hall_8.jpeg', name: 'Custom Bar Unit & Display Showcase', category: 'living', room: 'Living Room', materials: 'Smoked Oak, Mirror Backing' },
+  { id: 23, src: '/img/bedroom_10.jpeg', name: 'Master Suite with Walk-In Closet Joinery', category: 'bedroom', room: 'Bedroom', materials: 'Natural Veneer, Soft-Close Drawers' },
+  { id: 24, src: '/img/balcony_9.jpeg', name: 'Weather-Resistant Balcony Deck & Lounge', category: 'living', room: 'Balcony', materials: 'Treated Teak, Water-Shield Coat' },
+  { id: 25, src: '/img/hall_10.jpeg', name: 'Sculptural Ceiling & Media Wall Paneling', category: 'living', room: 'Living Room', materials: 'Acoustic Wood Louvers, PU Finish' },
+  { id: 26, src: '/img/hall_11.jpeg', name: 'Curated Open-Concept Hallway & Dining', category: 'living', room: 'Living Room', materials: 'Solid Teak, BWP 710 Marine Ply' },
+  { id: 27, src: '/img/hall_12.jpeg', name: 'Luxury Penthouse Living Room Setting', category: 'living', room: 'Living Room', materials: 'Custom Joinery, Brass Highlights' },
+  { id: 28, src: '/img/cupboard_3.jpeg', name: 'Walk-In Wardrobe with Island Drawer Unit', category: 'wardrobe', room: 'Wardrobe', materials: 'Fluted Glass, Velvet Lined Trays' },
+  { id: 29, src: '/img/kitchen_3.jpeg', name: 'L-Shaped Acrylic Modular Kitchen', category: 'kitchen', room: 'Kitchen', materials: 'Marine Ply, Hettich Tandem Box' },
+  { id: 30, src: '/img/mandir_3.jpeg', name: 'Compact Wall-Mounted Designer Mandir', category: 'mandir', room: 'Mandir', materials: 'CNC Jali Work, Solid Teak' }
 ];
 
 export default function Collections() {
@@ -93,8 +95,8 @@ export default function Collections() {
 
             {/* Quick Links */}
             <div className="flex items-center gap-2">
-              <NavLink 
-                to="/living"
+              <Link 
+                href="/living"
                 className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider border transition-all ${
                   isLightMode 
                     ? 'bg-white border-slate-200 text-slate-700 hover:text-emerald-700 shadow-sm' 
@@ -102,9 +104,9 @@ export default function Collections() {
                 }`}
               >
                 LIVING ROOM SPECIFICS →
-              </NavLink>
-              <NavLink 
-                to="/bedroom"
+              </Link>
+              <Link 
+                href="/bedroom"
                 className={`px-4 py-2 rounded-xl text-xs font-bold tracking-wider border transition-all ${
                   isLightMode 
                     ? 'bg-white border-slate-200 text-slate-700 hover:text-purple-700 shadow-sm' 
@@ -112,7 +114,7 @@ export default function Collections() {
                 }`}
               >
                 BEDROOM SPECIFICS →
-              </NavLink>
+              </Link>
             </div>
           </div>
 
@@ -213,7 +215,7 @@ export default function Collections() {
                 {/* Image Container */}
                 <div className="relative h-72 w-full overflow-hidden bg-gray-900">
                   <img 
-                    src={`${import.meta.env.BASE_URL}${item.src}`} 
+                    src={item.src} 
                     alt={item.name} 
                     loading="lazy" 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 

@@ -1,21 +1,23 @@
+'use client';
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
-import QuickViewModal from '../components/QuickViewModal';
+import Link from 'next/link';
+import { useTheme } from '../../context/ThemeContext';
+import QuickViewModal from '../../components/QuickViewModal';
 
 export const livingRoomData = [
-  { id: 1, src: 'img/hall_1.jpg', name: 'Minimalist Modular Sofa & Louver Panel', materials: 'Solid Teak, Premium Bouclé Fabric, Warm LED' },
-  { id: 2, src: 'img/hall_2.avif', name: 'Architectural Foyer Partition & Credenza', materials: 'Burma Teak, Rose Gold Trims, Natural Veneer' },
-  { id: 3, src: 'img/hall_3.jpeg', name: 'Curved Lounge & Nesting Coffee Ensemble', materials: 'Oak Wood, Smoked Glass, Brass Inlays' },
-  { id: 4, src: 'img/hall_4.jpeg', name: 'Suspended Media Console & Fluted Wall', materials: 'Reclaimed Teak Wood, Matt Charcoal PU' },
-  { id: 5, src: 'img/hall_5.jpeg', name: 'Bespoke Home Study & Open Bookshelf', materials: 'Solid Ash Wood, Concealed Wiring Channels' },
-  { id: 6, src: 'img/hall_6.jpeg', name: 'Contemporary Accent Lounge Seating', materials: 'Mahogany, Top-Grain Textured Fabric' },
-  { id: 7, src: 'img/hall_7.jpeg', name: 'Grand Great Room Entertainment Suite', materials: 'Burma Teak, Fluted Louvers, Acoustic Padding' },
-  { id: 8, src: 'img/hall_8.jpeg', name: 'Custom Bar Credenza & Glass Showcase', materials: 'Smoked Oak, Mirror Backing, Warm Strip LEDs' },
-  { id: 10, src: 'img/hall_10.jpeg', name: 'Sculptural Ceiling & Media Paneling', materials: 'Birch Plywood, Polyurethane Satin Polish' },
-  { id: 11, src: 'img/hall_11.jpeg', name: 'Open-Concept Living & Dining Flow', materials: 'Mixed Premium Hardwoods, Hafele Fittings' },
-  { id: 12, src: 'img/hall_12.jpeg', name: 'Penthouse Living Room Turnkey Joinery', materials: 'Teak Veneer, Italian PU Lacquer' },
-  { id: 13, src: 'img/dining_1.jpeg', name: '6-Seater Solid Timber Dining Table', materials: 'Solid Walnut Wood, Hand-Beveled Edge' },
+  { id: 1, src: '/img/hall_1.jpg', name: 'Minimalist Modular Sofa & Louver Panel', materials: 'Solid Teak, Premium Bouclé Fabric, Warm LED' },
+  { id: 2, src: '/img/hall_2.avif', name: 'Architectural Foyer Partition & Credenza', materials: 'Burma Teak, Rose Gold Trims, Natural Veneer' },
+  { id: 3, src: '/img/hall_3.jpeg', name: 'Curved Lounge & Nesting Coffee Ensemble', materials: 'Oak Wood, Smoked Glass, Brass Inlays' },
+  { id: 4, src: '/img/hall_4.jpeg', name: 'Suspended Media Console & Fluted Wall', materials: 'Reclaimed Teak Wood, Matt Charcoal PU' },
+  { id: 5, src: '/img/hall_5.jpeg', name: 'Bespoke Home Study & Open Bookshelf', materials: 'Solid Ash Wood, Concealed Wiring Channels' },
+  { id: 6, src: '/img/hall_6.jpeg', name: 'Contemporary Accent Lounge Seating', materials: 'Mahogany, Top-Grain Textured Fabric' },
+  { id: 7, src: '/img/hall_7.jpeg', name: 'Grand Great Room Entertainment Suite', materials: 'Burma Teak, Fluted Louvers, Acoustic Padding' },
+  { id: 8, src: '/img/hall_8.jpeg', name: 'Custom Bar Credenza & Glass Showcase', materials: 'Smoked Oak, Mirror Backing, Warm Strip LEDs' },
+  { id: 10, src: '/img/hall_10.jpeg', name: 'Sculptural Ceiling & Media Paneling', materials: 'Birch Plywood, Polyurethane Satin Polish' },
+  { id: 11, src: '/img/hall_11.jpeg', name: 'Open-Concept Living & Dining Flow', materials: 'Mixed Premium Hardwoods, Hafele Fittings' },
+  { id: 12, src: '/img/hall_12.jpeg', name: 'Penthouse Living Room Turnkey Joinery', materials: 'Teak Veneer, Italian PU Lacquer' },
+  { id: 13, src: '/img/dining_1.jpeg', name: '6-Seater Solid Timber Dining Table', materials: 'Solid Walnut Wood, Hand-Beveled Edge' },
 ];
 
 export default function Living() {
@@ -52,7 +54,7 @@ export default function Living() {
 
           <div className="flex flex-wrap gap-3">
             <Link 
-              to="/collections" 
+              href="/collections" 
               className={`px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider transition-all duration-300 border ${
                 isLightMode ? 'bg-white border-slate-200 text-slate-700 hover:text-amber-700 shadow-sm' : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
               }`}
@@ -60,13 +62,13 @@ export default function Living() {
               ALL PIECES (30)
             </Link>
             <Link 
-              to="/living" 
+              href="/living" 
               className="px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider btn-amber-shimmer text-gray-950 shadow-[0_4px_20px_rgba(245,158,11,0.4)]"
             >
               LIVING ROOM (12)
             </Link>
             <Link 
-              to="/bedroom" 
+              href="/bedroom" 
               className={`px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider transition-all duration-300 border ${
                 isLightMode ? 'bg-white border-slate-200 text-slate-700 hover:text-amber-700 shadow-sm' : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
               }`}
@@ -93,7 +95,7 @@ export default function Living() {
             >
               <div className="relative h-80 w-full overflow-hidden bg-gray-900">
                 <img 
-                  src={`${import.meta.env.BASE_URL}${item.src}`} 
+                  src={item.src} 
                   alt={item.name} 
                   loading="lazy" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 

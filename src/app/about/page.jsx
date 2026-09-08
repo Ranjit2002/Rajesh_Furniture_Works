@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
+'use client';
+
+import Link from "next/link";
+import { useTheme } from "../../context/ThemeContext";
 
 const milestones = [
   {
@@ -324,13 +326,13 @@ export default function About() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
             <Link
-              to="/collections"
+              href="/collections"
               className="w-full sm:w-auto px-8 py-4 rounded-xl btn-gradient-shimmer text-gray-950 font-black text-sm tracking-wide shadow-xl text-center"
             >
               EXPLORE COLLECTIONS
             </Link>
             <Link
-              to="/contact"
+              href="/contact"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white keep-white font-bold text-sm tracking-wide transition-all text-center"
             >
               BOOK WORKSHOP VISIT

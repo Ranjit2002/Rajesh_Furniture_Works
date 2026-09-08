@@ -1,6 +1,8 @@
+'use client';
+
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 
 const faqs = [
   {
@@ -22,7 +24,7 @@ const faqs = [
 ];
 
 export default function Contact() {
-  const form = useRef();
+  const form = useRef(null);
   const [status, setStatus] = useState("idle");
   const { isLightMode } = useTheme();
   const [selectedProjectType, setSelectedProjectType] =
@@ -51,7 +53,7 @@ export default function Contact() {
       )
       .then(() => {
         setStatus("success");
-        form.current.reset();
+        if (form.current) form.current.reset();
         setTimeout(() => setStatus("idle"), 4000);
       })
       .catch((error) => {

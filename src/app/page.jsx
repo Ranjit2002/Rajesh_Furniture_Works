@@ -1,28 +1,30 @@
+'use client';
+
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useTheme } from "../context/ThemeContext";
 
 const slidesData = [
   {
-    img: "img/hall_1.jpg",
+    img: "/img/hall_1.jpg",
     badge: "Artisanal Joinery Since 2004",
     title: "Architectural Woodcraft For Refined Spaces",
     desc: "Bespoke living room lounges, fluted TV consoles, and handcrafted timber furniture tailored to your floor plan.",
   },
   {
-    img: "img/bedroom_10.jpeg",
+    img: "/img/bedroom_10.jpeg",
     badge: "Luxury Master Suites",
     title: "Minimalist Comfort & Bespoke Bedrooms",
     desc: "Custom upholstered platform beds, hydraulic storage, and walk-in wardrobe joinery crafted for timeless tranquility.",
   },
   {
-    img: "img/hall_7.jpeg",
+    img: "/img/hall_7.jpeg",
     badge: "Sustainable Craftsmanship",
     title: "Solid Teak & Precision Engineered Veneers",
     desc: "Meticulously shaped using 100% seasoned hardwoods and German soft-close hardware that endure for generations.",
   },
   {
-    img: "img/hall_11.jpeg",
+    img: "/img/hall_11.jpeg",
     badge: "Complete Interior Solutions",
     title: "Transforming Living Spaces Into Sanctuaries",
     desc: "From custom modular kitchens and serene pooja mandirs to full home interior turnkey woodworking.",
@@ -33,37 +35,37 @@ const categoryData = [
   {
     title: "Living Room",
     count: "12 Pieces",
-    img: "img/hall_3.jpeg",
+    img: "/img/hall_3.jpeg",
     link: "/living",
   },
   {
     title: "Bedroom Suites",
     count: "8 Pieces",
-    img: "img/bedroom_2.jpeg",
+    img: "/img/bedroom_2.jpeg",
     link: "/bedroom",
   },
   {
     title: "Modular Kitchens",
     count: "Custom Fit",
-    img: "img/kichen_1.jpeg",
+    img: "/img/kichen_1.jpeg",
     link: "/collections",
   },
   {
     title: "Custom Wardrobes",
     count: "Floor-to-Ceiling",
-    img: "img/cupboard_1.jpeg",
+    img: "/img/cupboard_1.jpeg",
     link: "/collections",
   },
   {
     title: "Sacred Mandirs",
     count: "Hand Carved",
-    img: "img/mandir_1.jpeg",
+    img: "/img/mandir_1.jpeg",
     link: "/collections",
   },
   {
     title: "Balcony & Lounges",
     count: "Weatherproof",
-    img: "img/balcony_9.jpeg",
+    img: "/img/balcony_9.jpeg",
     link: "/collections",
   },
 ];
@@ -152,7 +154,7 @@ export default function Home() {
           >
             {/* Image with slow pan */}
             <img
-              src={`${import.meta.env.BASE_URL}${slide.img}`}
+              src={slide.img}
               alt={slide.title}
               className="absolute inset-0 w-full h-full object-cover z-0 animate-pan"
             />
@@ -179,7 +181,7 @@ export default function Home() {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link
-                  to="/collections"
+                  href="/collections"
                   className="w-full sm:w-auto px-8 py-4 rounded-xl btn-gradient-shimmer text-gray-950 font-black text-sm tracking-wider shadow-[0_10px_30px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>EXPLORE GALLERY</span>
@@ -199,7 +201,7 @@ export default function Home() {
                 </Link>
 
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/25 text-white keep-white font-bold text-sm tracking-wider backdrop-blur-md hover:border-cyan-400 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>REQUEST CONSULTATION</span>
@@ -358,14 +360,14 @@ export default function Home() {
             {categoryData.map((cat, idx) => (
               <Link
                 key={idx}
-                to={cat.link}
+                href={cat.link}
                 data-aos="fade-up"
                 data-aos-delay={idx * 100}
                 className="group relative h-80 rounded-3xl overflow-hidden border border-white/10 shadow-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.6)] cursor-pointer"
               >
                 {/* Background Image */}
                 <img
-                  src={`${import.meta.env.BASE_URL}${cat.img}`}
+                  src={cat.img}
                   alt={cat.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
@@ -500,63 +502,60 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 3. EDITORIAL CRAFTSMANSHIP SPOTLIGHTS */}
-        <section className="py-24 max-w-7xl mx-auto px-6">
+        {/* 3. FEATURED ROOM SPOTLIGHTS */}
+        <section className="max-w-7xl mx-auto px-6 py-24 space-y-28">
           {/* Spotlight 1: Living Room */}
-          <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
             <div data-aos="fade-right" className="w-full lg:w-1/2">
               <span className="text-emerald-500 font-black text-xs tracking-widest uppercase block mb-3">
-                Architectural Living Rooms
+                Living Room Statement
               </span>
               <h3
                 className={`text-3xl sm:text-4xl font-black tracking-tight mb-6 leading-tight ${
                   isLightMode ? "text-slate-900" : "text-white"
                 }`}
               >
-                Crafting Spaces That Inspire{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-cyan-500">
-                  Everyday Living.
-                </span>
+                Crafting Grand Foyers &{" "}
+                <span className="animated-gradient-text">Acoustic TV Walls.</span>
               </h3>
               <p
                 className={`leading-relaxed mb-6 ${isLightMode ? "text-slate-600" : "text-gray-300"}`}
               >
-                At Rajesh Furniture Works, we believe custom furniture should be
-                the soul of your home. We balance functional ergonomics with
-                clean architectural profiles—seamlessly hiding entertainment
-                wiring, incorporating acoustic fluted paneling, and ensuring
-                effortless room flow.
+                The living room is the crown jewel of your home. We custom craft
+                fluted charcoal wall louvers, suspended credenzas with concealed
+                ambient LED channels, and geometric wooden partition screens that
+                balance openness with privacy.
               </p>
 
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                <div
-                  className={`p-4 rounded-xl border ${isLightMode ? "bg-white border-slate-200 shadow-sm" : "bg-white/5 border-white/5"}`}
+              <ul className="space-y-3 mb-8 text-sm">
+                <li
+                  className={`flex items-center gap-3 ${isLightMode ? "text-slate-700" : "text-gray-300"}`}
                 >
-                  <span className="block text-emerald-500 font-black text-xl">
-                    Custom Fit
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span>
+                    Concealed wire-management conduits for zero visible cords
                   </span>
-                  <span
-                    className={`text-xs ${isLightMode ? "text-slate-500" : "text-gray-400"}`}
-                  >
-                    Tailored to exact millimetres
-                  </span>
-                </div>
-                <div
-                  className={`p-4 rounded-xl border ${isLightMode ? "bg-white border-slate-200 shadow-sm" : "bg-white/5 border-white/5"}`}
+                </li>
+                <li
+                  className={`flex items-center gap-3 ${isLightMode ? "text-slate-700" : "text-gray-300"}`}
                 >
-                  <span className="block text-cyan-500 font-black text-xl">
-                    Fluted Accents
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span>
+                    Sound-dampening acoustic wooden fluting and louvers
                   </span>
-                  <span
-                    className={`text-xs ${isLightMode ? "text-slate-500" : "text-gray-400"}`}
-                  >
-                    Hand-carved wood louvers
+                </li>
+                <li
+                  className={`flex items-center gap-3 ${isLightMode ? "text-slate-700" : "text-gray-300"}`}
+                >
+                  <span className="text-emerald-500 font-bold">✓</span>
+                  <span>
+                    Custom tinted glass display showcases with warm 3000K LEDs
                   </span>
-                </div>
-              </div>
+                </li>
+              </ul>
 
               <Link
-                to="/living"
+                href="/living"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl btn-gradient-shimmer text-gray-950 font-bold text-xs tracking-wider shadow-md"
               >
                 <span>EXPLORE LIVING ROOM DESIGNS</span>
@@ -572,7 +571,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-cyan-500/20 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl"></div>
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 <img
-                  src={`${import.meta.env.BASE_URL}img/hall_11.jpeg`}
+                  src="/img/hall_11.jpeg"
                   alt="Living room interior woodwork"
                   className="w-full h-[440px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -603,7 +602,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 rounded-3xl blur-2xl transition-all duration-500 group-hover:blur-3xl"></div>
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
                 <img
-                  src={`${import.meta.env.BASE_URL}img/kichen_1.jpeg`}
+                  src="/img/kichen_1.jpeg"
                   alt="Modular kitchen design"
                   className="w-full h-[440px] object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -678,7 +677,7 @@ export default function Home() {
               </ul>
 
               <Link
-                to="/contact"
+                href="/contact"
                 className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border text-xs font-bold tracking-wider transition-all ${
                   isLightMode
                     ? "bg-white border-slate-300 text-slate-800 hover:border-emerald-500 hover:text-emerald-700 shadow-sm"
@@ -885,7 +884,7 @@ export default function Home() {
                 </a>
 
                 <Link
-                  to="/contact"
+                  href="/contact"
                   className="w-full sm:w-auto px-4 sm:px-8 py-4 rounded-xl bg-transparent hover:bg-white/10 border border-white/25 text-white keep-white font-bold text-sm tracking-wider transition-all whitespace-nowrap"
                 >
                   VISIT WORKSHOP

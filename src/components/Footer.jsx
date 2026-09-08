@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+'use client';
+
+import Link from 'next/link';
 import { useTheme } from '../context/ThemeContext';
 import { scrollToTop } from '../utils/scrollUtils';
 
@@ -20,7 +22,7 @@ export default function Footer() {
           
           {/* COLUMN 1: BRAND IDENTITY */}
           <div className="space-y-4">
-            <Link to="/" className="inline-flex items-center gap-3">
+            <Link href="/" className="inline-flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center p-[1px] shadow-[0_0_15px_rgba(52,211,153,0.4)]">
                 <div className={`w-full h-full rounded-[11px] flex items-center justify-center ${isLightMode ? 'bg-white' : 'bg-gray-950'}`}>
                   <svg className="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -52,7 +54,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/living" className={`transition-colors flex items-center gap-1.5 group ${
+                <Link href="/living" className={`transition-colors flex items-center gap-1.5 group ${
                   isLightMode ? 'text-slate-600 hover:text-emerald-600 font-medium' : 'text-gray-400 hover:text-emerald-400'
                 }`}>
                   <span className="text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">›</span>
@@ -60,7 +62,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/bedroom" className={`transition-colors flex items-center gap-1.5 group ${
+                <Link href="/bedroom" className={`transition-colors flex items-center gap-1.5 group ${
                   isLightMode ? 'text-slate-600 hover:text-emerald-600 font-medium' : 'text-gray-400 hover:text-emerald-400'
                 }`}>
                   <span className="text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">›</span>
@@ -68,7 +70,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/collections" className={`transition-colors flex items-center gap-1.5 group ${
+                <Link href="/collections" className={`transition-colors flex items-center gap-1.5 group ${
                   isLightMode ? 'text-slate-600 hover:text-emerald-600 font-medium' : 'text-gray-400 hover:text-emerald-400'
                 }`}>
                   <span className="text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">›</span>
@@ -76,7 +78,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/collections" className={`transition-colors flex items-center gap-1.5 group ${
+                <Link href="/collections" className={`transition-colors flex items-center gap-1.5 group ${
                   isLightMode ? 'text-slate-600 hover:text-emerald-600 font-medium' : 'text-gray-400 hover:text-emerald-400'
                 }`}>
                   <span className="text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">›</span>
@@ -84,7 +86,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/collections" className={`transition-colors flex items-center gap-1.5 group ${
+                <Link href="/collections" className={`transition-colors flex items-center gap-1.5 group ${
                   isLightMode ? 'text-slate-600 hover:text-emerald-600 font-medium' : 'text-gray-400 hover:text-emerald-400'
                 }`}>
                   <span className="text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity">›</span>
@@ -186,7 +188,7 @@ export default function Footer() {
         <div className={`pt-8 border-t flex flex-col sm:flex-row items-center justify-between gap-4 text-xs ${
           isLightMode ? 'border-slate-200 text-slate-500' : 'border-white/10 text-gray-500'
         }`}>
-          <p>&copy; 2026 RAJESH FURNITURE WORKS. All rights reserved. Crafted with passion in Maharashtra, India.</p>
+          <p>&copy; {new Date().getFullYear()} RAJESH FURNITURE WORKS. All rights reserved. Crafted with passion in Maharashtra, India.</p>
 
           <button
             type="button"

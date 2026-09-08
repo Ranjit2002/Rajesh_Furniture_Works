@@ -1,17 +1,19 @@
+'use client';
+
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
-import QuickViewModal from '../components/QuickViewModal';
+import Link from 'next/link';
+import { useTheme } from '../../context/ThemeContext';
+import QuickViewModal from '../../components/QuickViewModal';
 
 export const bedroomData = [
-  { id: 101, src: 'img/bedroom_1.jpeg', name: 'Royal Teak Master Platform Bed', materials: 'Solid Burma Teak, Hydraulic Storage Lift, PU Polish' },
-  { id: 102, src: 'img/bedroom_2.jpeg', name: 'Modern Floating Bed with Nightstand Panels', materials: 'American Walnut Wood, Integrated Warm LEDs' },
-  { id: 103, src: 'img/bedroom_3.jpeg', name: 'Fluted Dresser & Acoustic Wall Unit', materials: 'Natural Oak Veneer, Brushed Brass Knobs' },
-  { id: 104, src: 'img/bedroom_5.jpeg', name: 'Executive Master Wardrobe Suite', materials: 'BWP 710 Marine Ply, Soft-Close Hafele Runners' },
-  { id: 105, src: 'img/bedroom_7.jpeg', name: 'Curved Arch Vanity Desk & Mirror Accent', materials: 'Ash Wood, Velvet Stool, Concealed Drawer' },
-  { id: 106, src: 'img/bedroom_8.jpeg', name: 'Scandinavian Minimalist Bedroom Suite', materials: 'Acoustic Pine Slats, Matte Linen Finish' },
-  { id: 107, src: 'img/bedroom_9.jpeg', name: 'Integrated Workstation & Murphy Bed Unit', materials: 'High-Density Engineered Hardwood, Satin Grey' },
-  { id: 108, src: 'img/bedroom_10.jpeg', name: 'Grand Master Suite with Walk-In Dressing', materials: 'Natural Teak Veneer, Sensor Wardrobe Lights' },
+  { id: 101, src: '/img/bedroom_1.jpeg', name: 'Royal Teak Master Platform Bed', materials: 'Solid Burma Teak, Hydraulic Storage Lift, PU Polish' },
+  { id: 102, src: '/img/bedroom_2.jpeg', name: 'Modern Floating Bed with Nightstand Panels', materials: 'American Walnut Wood, Integrated Warm LEDs' },
+  { id: 103, src: '/img/bedroom_3.jpeg', name: 'Fluted Dresser & Acoustic Wall Unit', materials: 'Natural Oak Veneer, Brushed Brass Knobs' },
+  { id: 104, src: '/img/bedroom_5.jpeg', name: 'Executive Master Wardrobe Suite', materials: 'BWP 710 Marine Ply, Soft-Close Hafele Runners' },
+  { id: 105, src: '/img/bedroom_7.jpeg', name: 'Curved Arch Vanity Desk & Mirror Accent', materials: 'Ash Wood, Velvet Stool, Concealed Drawer' },
+  { id: 106, src: '/img/bedroom_8.jpeg', name: 'Scandinavian Minimalist Bedroom Suite', materials: 'Acoustic Pine Slats, Matte Linen Finish' },
+  { id: 107, src: '/img/bedroom_9.jpeg', name: 'Integrated Workstation & Murphy Bed Unit', materials: 'High-Density Engineered Hardwood, Satin Grey' },
+  { id: 108, src: '/img/bedroom_10.jpeg', name: 'Grand Master Suite with Walk-In Dressing', materials: 'Natural Teak Veneer, Sensor Wardrobe Lights' },
 ];
 
 export default function Bedroom() {
@@ -48,7 +50,7 @@ export default function Bedroom() {
 
           <div className="flex flex-wrap gap-3">
             <Link 
-              to="/collections" 
+              href="/collections" 
               className={`px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider transition-all duration-300 border ${
                 isLightMode ? 'bg-white border-slate-200 text-slate-700 hover:text-purple-700 shadow-sm' : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
               }`}
@@ -56,7 +58,7 @@ export default function Bedroom() {
               ALL PIECES (30)
             </Link>
             <Link 
-              to="/living" 
+              href="/living" 
               className={`px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider transition-all duration-300 border ${
                 isLightMode ? 'bg-white border-slate-200 text-slate-700 hover:text-purple-700 shadow-sm' : 'bg-white/5 border-white/10 text-gray-400 hover:text-white'
               }`}
@@ -64,7 +66,7 @@ export default function Bedroom() {
               LIVING ROOM (12)
             </Link>
             <Link 
-              to="/bedroom" 
+              href="/bedroom" 
               className="px-5 py-2.5 rounded-xl text-xs font-bold tracking-wider bg-gradient-to-r from-purple-500 to-pink-500 text-white font-black shadow-[0_4px_20px_rgba(168,85,247,0.4)]"
             >
               BEDROOM (8)
@@ -89,7 +91,7 @@ export default function Bedroom() {
             >
               <div className="relative h-80 w-full overflow-hidden bg-gray-900">
                 <img 
-                  src={`${import.meta.env.BASE_URL}${item.src}`} 
+                  src={item.src} 
                   alt={item.name} 
                   loading="lazy" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 

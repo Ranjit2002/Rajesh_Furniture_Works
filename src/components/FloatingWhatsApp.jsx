@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 export default function FloatingWhatsApp() {
@@ -28,7 +30,7 @@ export default function FloatingWhatsApp() {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         aria-label="Chat on WhatsApp"
-        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500 text-white shadow-[0_8px_30px_rgba(16,185,129,0.5)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.8)] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500 text-white shadow-[0_8px_30px_rgba(160,185,129,0.5)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.8)] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
       >
         {/* Pulsing Ripple Effect */}
         <span className="absolute -inset-1 rounded-full bg-emerald-400/40 animate-ping pointer-events-none"></span>

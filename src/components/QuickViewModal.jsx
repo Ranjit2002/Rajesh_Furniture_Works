@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -10,6 +12,8 @@ export default function QuickViewModal({ item, onClose }) {
   }, [item]);
 
   if (!item) return null;
+
+  const imageSrc = item.src.startsWith('/') ? item.src : `/${item.src}`;
 
   const whatsappMessage = encodeURIComponent(
     `Hello Rajesh Furniture Works, I am interested in customizing / ordering this piece: "${item.name}" (Materials: ${item.materials || 'Premium Hardwood'}). Could you please share more details and pricing?`
@@ -51,7 +55,7 @@ export default function QuickViewModal({ item, onClose }) {
           <div className="w-full md:w-3/5 bg-gray-900 flex items-center justify-center overflow-hidden relative group">
             <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent z-10 pointer-events-none"></div>
             <img 
-              src={`${import.meta.env.BASE_URL}${item.src.replace(/^\//, '')}`} 
+              src={imageSrc} 
               alt={item.name} 
               className="w-full h-full max-h-[45vh] md:max-h-[80vh] object-contain p-2 md:p-6 transition-transform duration-700 group-hover:scale-105"
             />
